@@ -70,6 +70,7 @@
             this.btScr.TabIndex = 3;
             this.btScr.Text = "Sacar";
             this.btScr.UseVisualStyleBackColor = true;
+            this.btScr.Click += new System.EventHandler(this.btScr_Click);
             // 
             // numOperValor
             // 
