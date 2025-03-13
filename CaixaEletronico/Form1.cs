@@ -21,10 +21,10 @@ namespace CaixaEletronico
         {
             InitializeComponent();
         }
-      
+
         private void btDpt_Click(object sender, EventArgs e)
         {
-            
+
             Saldo += (double)numOperValor.Value;
             vlrSaldo.Text = Saldo.ToString("c");
         }
@@ -38,8 +38,35 @@ namespace CaixaEletronico
                 Saldo -= (double)numOperValor.Value;
                 vlrSaldo.Text = Saldo.ToString("c");
             }
-                
 
+
+        }
+
+        double taxa = 0.001;
+        private void tmrJuros_Tick(object sender, EventArgs e)
+        {
+            Saldo += Saldo * taxa;
+            vlrSaldo.Text = Saldo.ToString("c");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            lblTaxa.Text = $"* Taxa: {taxa * 100}% a cada {tmrJuros.Interval / 1000}s";
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult r = MessageBox.Show("Deseja mesmo sair da aplicação?", "Banco Jesus", MessageBoxButtons.YesNo);
+            if (r == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+           
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show("Tchau, pobre!");
         }
     }
 }

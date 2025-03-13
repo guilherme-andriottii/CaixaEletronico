@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblValor = new System.Windows.Forms.Label();
             this.btDpt = new System.Windows.Forms.Button();
             this.btScr = new System.Windows.Forms.Button();
@@ -36,6 +37,8 @@
             this.numOperLimite = new System.Windows.Forms.NumericUpDown();
             this.lblLimite = new System.Windows.Forms.Label();
             this.vlrSaldo = new System.Windows.Forms.Label();
+            this.tmrJuros = new System.Windows.Forms.Timer(this.components);
+            this.lblTaxa = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numOperValor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOperLimite)).BeginInit();
             this.SuspendLayout();
@@ -123,11 +126,27 @@
             this.vlrSaldo.TabIndex = 9;
             this.vlrSaldo.Text = "R$ 0,00";
             // 
+            // tmrJuros
+            // 
+            this.tmrJuros.Enabled = true;
+            this.tmrJuros.Interval = 5000;
+            this.tmrJuros.Tick += new System.EventHandler(this.tmrJuros_Tick);
+            // 
+            // lblTaxa
+            // 
+            this.lblTaxa.AutoSize = true;
+            this.lblTaxa.Location = new System.Drawing.Point(173, 403);
+            this.lblTaxa.Name = "lblTaxa";
+            this.lblTaxa.Size = new System.Drawing.Size(35, 13);
+            this.lblTaxa.TabIndex = 10;
+            this.lblTaxa.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTaxa);
             this.Controls.Add(this.vlrSaldo);
             this.Controls.Add(this.numOperLimite);
             this.Controls.Add(this.lblLimite);
@@ -138,6 +157,9 @@
             this.Controls.Add(this.lblValor);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numOperValor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numOperLimite)).EndInit();
             this.ResumeLayout(false);
@@ -155,6 +177,8 @@
         private System.Windows.Forms.NumericUpDown numOperLimite;
         private System.Windows.Forms.Label lblLimite;
         private System.Windows.Forms.Label vlrSaldo;
+        private System.Windows.Forms.Timer tmrJuros;
+        private System.Windows.Forms.Label lblTaxa;
     }
 }
 
